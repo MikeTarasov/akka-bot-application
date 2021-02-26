@@ -21,3 +21,8 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/akka-bot-application.iml
+/.idea/
+/api-service/api-service.iml
+/bot-application/bot-application.iml
+/main-application/main-application.iml
