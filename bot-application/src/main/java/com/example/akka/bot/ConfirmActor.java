@@ -25,10 +25,10 @@ public class ConfirmActor extends AbstractBehavior<ConfirmActor.Request> {
     }
 
     private Behavior<Request> onRequest(Request command) {
-        getContext().getLog().info("Hello {}!", command.whom);
-        //#greeter-send-message
+        getContext().getLog().info("What an interesting question {}!", command.whom);
+
         command.replyTo.tell(new Response(command.whom, getContext().getSelf()));
-        //#greeter-send-message
+
         return this;
     }
 

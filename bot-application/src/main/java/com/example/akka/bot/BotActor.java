@@ -8,16 +8,12 @@ import akka.actor.typed.javadsl.Receive;
 
 public class BotActor extends AbstractBehavior<ConfirmActor.Response> {
 
-    private final int max;
-    private int greetingCounter;
-
-    private BotActor(ActorContext<ConfirmActor.Response> context, int max) {
+    private BotActor(ActorContext<ConfirmActor.Response> context) {
         super(context);
-        this.max = max;
     }
 
-    public static Behavior<ConfirmActor.Response> create(int max) {
-        return Behaviors.setup(context -> new BotActor(context, max));
+    public static Behavior<ConfirmActor.Response> create() {
+        return Behaviors.setup(BotActor::new);
     }
 
     @Override
@@ -26,13 +22,15 @@ public class BotActor extends AbstractBehavior<ConfirmActor.Response> {
     }
 
     private Behavior<ConfirmActor.Response> onResponse(ConfirmActor.Response message) {
-        greetingCounter++;
-        getContext().getLog().info("Greeting {} for {}", greetingCounter, message.whom);
-        if (greetingCounter == max) {
-            return Behaviors.stopped();
-        } else {
-            message.from.tell(new ConfirmActor.Request(message.whom, getContext().getSelf()));
-            return this;
-        }
+        getContext().getLog().info("Try to find answer to {}", message.whom);
+
+
+        message.from.tell(new ConfirmActor.Request(message.whom, getContext().getSelf()));
+
+        return this;
+    }
+
+    private MessageResponse requestToApi(String request) {
+        return null;
     }
 }

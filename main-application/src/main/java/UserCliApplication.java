@@ -1,23 +1,35 @@
 import akka.actor.typed.ActorSystem;
 import com.example.akka.bot.GuardianActor;
 
+import java.util.Scanner;
+
 public class UserCliApplication {
+
+    private static ActorSystem<GuardianActor.AskQuestion> guardianActor;
+
     public static void main(String[] args) {
-        //#actor-system
-        final ActorSystem<GuardianActor.AskQuestion> greeterMain =
-                ActorSystem.create(GuardianActor.create(), "guardian-actor");
-        //#actor-system
 
-        //#main-send-messages
-        greeterMain.tell(new GuardianActor.AskQuestion("Charles"));
-        //#main-send-messages
+        guardianActor = ActorSystem.create(GuardianActor.create(), "guardian-actor");
 
-//        try {
-//            System.out.println(">>> Press ENTER to exit <<<");
-//            System.in.read();
-//        } catch (IOException ignored) {
-//        } finally {
-//            greeterMain.terminate();
-//        }
+        userCli();
+
+        guardianActor.terminate();
+    }
+
+    private static void userCli() {
+        System.out.println("\tHello! I am chat bot! Ask me about anything:");
+        boolean finish = false;
+        Scanner scanner = new Scanner(System.in);
+
+        while (!finish) {
+            String input = scanner.nextLine();
+
+            if ("n".equalsIgnoreCase(input)) {
+                finish = true;
+            } else {
+                guardianActor.tell(new GuardianActor.AskQuestion(input));
+                System.out.println("\n\tNext question: [Y/N]");
+            }
+        }
     }
 }
