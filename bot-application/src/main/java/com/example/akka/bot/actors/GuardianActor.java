@@ -1,4 +1,4 @@
-package com.example.akka.bot;
+package com.example.akka.bot.actors;
 
 import akka.actor.typed.ActorRef;
 import akka.actor.typed.Behavior;
@@ -9,12 +9,12 @@ import akka.actor.typed.javadsl.Receive;
 
 public class GuardianActor extends AbstractBehavior<GuardianActor.AskQuestion> {
 
-    private final ActorRef<ConfirmActor.Request> greeter;
+    private final ActorRef<ConfirmActor.Request> confirmActor;
 
     private GuardianActor(ActorContext<AskQuestion> context) {
         super(context);
         //#create-actors
-        greeter = context.spawn(ConfirmActor.create(), "confirm-actor");
+        confirmActor = context.spawn(ConfirmActor.create(), "confirm-actor");
         //#create-actors
     }
 
@@ -31,7 +31,7 @@ public class GuardianActor extends AbstractBehavior<GuardianActor.AskQuestion> {
         //#create-actors
         ActorRef<ConfirmActor.Response> replyTo =
                 getContext().spawn(BotActor.create(), command.name);
-        greeter.tell(new ConfirmActor.Request(command.name, replyTo));
+        confirmActor.tell(new ConfirmActor.Request(command.name, replyTo));
         //#create-actors
         return this;
     }

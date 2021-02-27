@@ -1,5 +1,5 @@
 import akka.actor.typed.ActorSystem;
-import com.example.akka.bot.GuardianActor;
+import com.example.akka.bot.actors.GuardianActor;
 
 import java.util.Scanner;
 

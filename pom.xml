@@ -25,13 +25,24 @@
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-http</artifactId>
+            <artifactId>akka-http-core_2.13</artifactId>
+            <version>10.2.4</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-http-jackson</artifactId>
-            <version>3.0.0-RC1</version>
+            <artifactId>akka-http_2.13</artifactId>
+            <version>10.2.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-stream_2.13</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.typesafe.akka</groupId>-->
+        <!--            <artifactId>akka-http-jackson</artifactId>-->
+        <!--            <version>3.0.0-RC1</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>

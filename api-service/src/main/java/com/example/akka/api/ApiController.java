@@ -1,5 +1,6 @@
 package com.example.akka.api;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ApiController {
 
     @GetMapping("/ask")
-    public String getAsk(@RequestParam(name = "question") String question) {
-        return "вы задали '" + question + "', но наши программисты все еще работают над этим";
+    public ResponseEntity<String> getAsk(@RequestParam(name = "question") String question) {
+        return ResponseEntity.ok("вы задали '" + question + "', но наши программисты все еще работают над этим");
     }
 }

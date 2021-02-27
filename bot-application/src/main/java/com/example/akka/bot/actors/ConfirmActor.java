@@ -1,4 +1,4 @@
-package com.example.akka.bot;
+package com.example.akka.bot.actors;
 
 import akka.actor.typed.ActorRef;
 import akka.actor.typed.Behavior;
