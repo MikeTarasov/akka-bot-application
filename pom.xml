@@ -7,6 +7,7 @@
     <artifactId>akka-bot-application</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
+
     <modules>
         <module>bot-application</module>
         <module>api-service</module>
@@ -40,6 +41,7 @@
             <version>${akka.http.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
