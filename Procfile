@@ -1,0 +1,1 @@
+web: java -jar jars/local/api-service.jar
