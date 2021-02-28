@@ -10,6 +10,11 @@ public class ApiController {
 
     @GetMapping("/ask")
     public ResponseEntity<String> getAsk(@RequestParam(name = "question") String question) {
-        return ResponseEntity.ok("вы задали '" + question + "', но наши программисты все еще работают над этим");
+        String answer = ApiStorage.findAnswer(question);
+        if (answer != null) {
+            return ResponseEntity.ok(answer);
+        }
+        return ResponseEntity.ok("вы задали '" + question + "', я пока не знаю на него ответ," +
+                " но наши программисты все еще работают над этим");
     }
 }

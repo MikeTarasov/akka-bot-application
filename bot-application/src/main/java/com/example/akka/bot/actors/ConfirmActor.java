@@ -25,7 +25,7 @@ public class ConfirmActor extends AbstractBehavior<ConfirmActor.Request> {
     }
 
     private Behavior<Request> onRequest(Request command) {
-        getContext().getLog().info("What an interesting question {}!", command.whom);
+        System.out.println("\tВопрос принят: " + command.whom);
 
         command.replyTo.tell(new Response(command.whom, getContext().getSelf()));
 

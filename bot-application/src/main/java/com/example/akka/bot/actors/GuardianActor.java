@@ -13,9 +13,8 @@ public class GuardianActor extends AbstractBehavior<GuardianActor.AskQuestion> {
 
     private GuardianActor(ActorContext<AskQuestion> context) {
         super(context);
-        //#create-actors
+
         confirmActor = context.spawn(ConfirmActor.create(), "confirm-actor");
-        //#create-actors
     }
 
     public static Behavior<AskQuestion> create() {
@@ -28,11 +27,9 @@ public class GuardianActor extends AbstractBehavior<GuardianActor.AskQuestion> {
     }
 
     private Behavior<AskQuestion> onAskQuestion(AskQuestion command) {
-        //#create-actors
-        ActorRef<ConfirmActor.Response> replyTo =
-                getContext().spawn(BotActor.create(), command.name);
+        ActorRef<ConfirmActor.Response> replyTo = getContext().spawn(BotActor.create(), command.name);
+
         confirmActor.tell(new ConfirmActor.Request(command.name, replyTo));
-        //#create-actors
         return this;
     }
 

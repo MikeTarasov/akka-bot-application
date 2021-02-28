@@ -27,3 +27,5 @@ hs_err_pid*
 /bot-application/bot-application.iml
 /main-application/main-application.iml
 /api-service/target/
+/bot-application/target/
+/main-application/target/
