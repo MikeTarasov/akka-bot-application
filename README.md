@@ -9,7 +9,7 @@
 - java -jar bash-scripts/api-service.jar
 - java -jar bash-scripts/user-cli.jar
 
-2. Start with deployed API (API-service deployed on heroku.com):
+2. Start with deployed API (API-service deployed on heroku.com)*:
 
 - start-with-deployed-api.sh in /bash-scripts or manually type:
 - java -jar bash-scripts/user-cli-with-deploy.jar
@@ -17,3 +17,5 @@
 3. Type 'help' to browse all known questions
 4. Type your question
 5. Type 'n' or 'N' for exit
+6. First response from deployed API comes within 20-30 seconds
+   (the time the server is restarted).
