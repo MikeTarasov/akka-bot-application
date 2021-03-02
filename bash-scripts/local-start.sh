@@ -1,3 +1,2 @@
 #!/bin/bash
-java -jar api-service.jar &
-java -jar user-cli.jar
+java -jar user-cli-local.jar

@@ -15,7 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BotActor extends AbstractBehavior<ConfirmActor.Response> {
 
-    private final String apiHost = "https://akka-bot-demo.herokuapp.com";
+    private final String apiHost = "http://localhost:8080";
+//            "https://akka-bot-demo.herokuapp.com";
 
     private BotActor(ActorContext<ConfirmActor.Response> context) {
         super(context);

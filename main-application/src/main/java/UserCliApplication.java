@@ -1,6 +1,7 @@
 import akka.actor.typed.ActorSystem;
 import com.example.akka.bot.actors.GuardianActor;
 
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
@@ -10,6 +11,14 @@ public class UserCliApplication {
     private static ActorSystem<GuardianActor.AskQuestion> guardianActor;
 
     public static void main(String[] args) {
+
+        ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "jetbrains://idea/navigate/reference?project=akka-bot-application&path=bash-scripts/api-service.jar");
+        processBuilder.redirectErrorStream(true);
+        try {
+            processBuilder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         guardianActor = ActorSystem.create(GuardianActor.create(), "guardian-actor");
 
